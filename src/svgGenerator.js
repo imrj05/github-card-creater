@@ -213,13 +213,9 @@ async function generateSVG(repo, owner, options = {}) {
     <path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/>
   </g>
   <text x="${leftItemX + 30}" y="${issuesTextY}"><tspan class="stat-n">${escapeXml(issues)}</tspan><tspan class="stat" dx="10"> issues</tspan></text>
-  <!-- License — left panel below issues (balance scale icon, 16×16 viewBox) -->
+  <!-- License — left panel below issues (Octicons law icon, 16×16 viewBox) -->
   <g transform="translate(${leftItemX}, ${licIconY}) scale(1.6)" fill="${theme.subtext}">
-    <!-- pole --><path d="M7.5 1h1v13h-1z"/>
-    <!-- beam --><path d="M1 2.5h14v1H1z"/>
-    <!-- left pan --><path d="M1 3.5Q3.5 9 6 3.5Z"/>
-    <!-- right pan --><path d="M10 3.5Q12.5 9 15 3.5Z"/>
-    <!-- base --><path d="M5 14.5h6v1H5z"/>
+    <path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736q.058.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53l.529.531l-.001.002l-.002.002l-.006.006l-.006.005l-.01.01l-.045.04q-.317.265-.686.45C14.556 10.78 13.88 11 13 11a4.5 4.5 0 0 1-2.023-.454a3.5 3.5 0 0 1-.686-.45l-.045-.04l-.016-.015l-.006-.006l-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.25.25 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.25.25 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53l.529.531l-.001.002l-.002.002l-.006.006l-.016.015l-.045.04q-.317.265-.686.45C4.556 10.78 3.88 11 3 11a4.5 4.5 0 0 1-2.023-.454a3.5 3.5 0 0 1-.686-.45l-.045-.04l-.016-.015l-.006-.006l-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.25.25 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0m2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"/>
   </g>
   <text x="${leftItemX + 30}" y="${licTextY}" class="meta">${license ? license : '<tspan font-style="italic">No license</tspan>'}</text>
   <!-- GitHub mark — large ghost watermark centred on right panel -->
