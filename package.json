@@ -1,8 +1,30 @@
 {
     "name": "github-card-creator",
     "version": "1.0.0",
-    "description": "Generate beautiful GitHub repository cards as SVG images",
+    "description": "Generate beautiful social preview cards for any Public GitHub repository as SVG/PNG images",
     "main": "src/server.js",
+    "homepage": "https://github-card-creater.vercel.app",
+    "license": "MIT",
+    "author": {
+        "name": "imrj05",
+        "url": "https://github.com/imrj05"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/imrj05/github-card-creater.git"
+    },
+    "bugs": {
+        "url": "https://github.com/imrj05/github-card-creater/issues"
+    },
+    "keywords": [
+        "github",
+        "card",
+        "svg",
+        "social-preview",
+        "readme",
+        "badge",
+        "open-source"
+    ],
     "scripts": {
         "start": "node src/server.js",
         "dev": "nodemon src/server.js"
