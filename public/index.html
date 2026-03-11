@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub Card Creator</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,7 +30,73 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px 40px;
+      padding: 0 20px 40px;
+    }
+    /* ── Navbar ── */
+    .navbar {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 14, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-brand svg { flex-shrink: 0; }
+    .nav-brand-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .nav-brand-name span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .nav-link:hover {
+      color: var(--text);
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    .nav-link.github {
+      color: var(--text);
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    .nav-link.github:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
     /* ── Header ── */
     .header {
@@ -49,16 +116,39 @@
       padding: 4px 14px;
       margin-bottom: 20px;
     }
-    h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .logo {
+      display: block;
+      flex-shrink: 0;
+      height: 64px;
+      width: auto;
+    }
+    .brand-text {
+      text-align: left;
+    }
+    .brand-text h1 {
+      font-size: 1.75rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--text);
-      margin-bottom: 12px;
       line-height: 1.1;
     }
-    h1 span {
+    .brand-text h1 span {
       color: var(--accent);
+    }
+    .brand-text p {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
     }
     .subtitle {
       color: var(--muted);
@@ -306,18 +396,92 @@
       background: var(--accent-dim);
     }
     /* ── Footer ── */
-    footer {
+    .site-footer {
+      width: 100%;
       margin-top: auto;
-      padding-top: 48px;
+      padding-top: 60px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: var(--muted);
       font-size: 13px;
     }
+    .footer-left svg { opacity: 0.5; }
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .footer-link:hover { color: var(--accent); }
   </style>
 </head>
-<body>
-  <div class="header">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="28" height="28">
+          <defs><clipPath id="nc"><rect width="64" height="64" rx="14" ry="14"/></clipPath></defs>
+          <rect width="64" height="64" rx="14" fill="#0d1117"/>
+          <rect width="64" height="5" fill="#00c9a7" clip-path="url(#nc)"/>
+          <rect width="64" height="64" rx="14" fill="none" stroke="#30363d" stroke-width="2"/>
+          <g transform="translate(12, 16) scale(2.5)" fill="white">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </g>
+        </svg>
+        <span class="nav-brand-name">GitHub Card <span>Creator</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="https://github.com/imrj05/github-card-creater" target="_blank" rel="noopener" class="nav-link github">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header" style="margin-top:60px;">
     <div class="badge">Open Source Tool</div>
-    <h1>GitHub Card <span>Creator</span></h1>
+    <div class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64" class="logo">
+        <defs><clipPath id="hc"><rect width="64" height="64" rx="14" ry="14"/></clipPath></defs>
+        <!-- Card icon -->
+        <rect width="64" height="64" rx="14" fill="#0d1117"/>
+        <rect width="64" height="5" fill="#00c9a7" clip-path="url(#hc)"/>
+        <rect width="64" height="64" rx="14" fill="none" stroke="#30363d" stroke-width="1.5"/>
+        <g transform="translate(12, 16) scale(2.5)" fill="white">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </g>
+        <!-- Text: "GitHub Card" -->
+        <text x="80" y="29" font-family="'Manrope', system-ui, sans-serif" font-weight="700" font-size="22" fill="#e2e8f0" letter-spacing="-0.5">GitHub Card</text>
+        <!-- Text: "Creator" in accent -->
+        <text x="80" y="55" font-family="'Manrope', system-ui, sans-serif" font-weight="800" font-size="22" fill="#00c9a7" letter-spacing="-0.5">Creator</text>
+      </svg>
+    </div>
     <p class="subtitle">Generate beautiful social preview cards for any GitHub repository</p>
   </div>
   <div class="card">
@@ -373,7 +537,37 @@
       <a href="#" class="example-link" data-repo="twbs/bootstrap">twbs/bootstrap</a>
     </div>
   </div>
-  <footer>GitHub Card Creator</footer>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="20" height="20">
+          <defs><clipPath id="fc"><rect width="64" height="64" rx="14" ry="14"/></clipPath></defs>
+          <rect width="64" height="64" rx="14" fill="#0d1117"/>
+          <rect width="64" height="5" fill="#00c9a7" clip-path="url(#fc)"/>
+          <rect width="64" height="64" rx="14" fill="none" stroke="#30363d" stroke-width="2"/>
+          <g transform="translate(12, 16) scale(2.5)" fill="white">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </g>
+        </svg>
+        GitHub Card Creator &nbsp;&mdash;&nbsp; © 2026
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/imrj05/github-card-creater" target="_blank" rel="noopener" class="footer-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          Source
+        </a>
+        <a href="https://github.com/imrj05/github-card-creater/issues" target="_blank" rel="noopener" class="footer-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
+            <path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/>
+          </svg>
+          Issues
+        </a>
+      </div>
+    </div>
+  </footer>
   <script>
     const repoInput = document.getElementById('repoInput');
     const themeSelect = document.getElementById('themeSelect');
