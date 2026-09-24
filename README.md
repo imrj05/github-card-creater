@@ -37,16 +37,18 @@ GITHUB_TOKEN=your_token_here
 ## API
 ### Generate Card
 ```
-GET /api/card/:owner/:repo?theme=dark|light
+GET /api/card/:owner/:repo?theme=dark|light&variant=default|terminal|gradient|minimal|newspaper
 ```
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `owner` | string | — | GitHub username or org |
 | `repo` | string | — | Repository name |
 | `theme` | string | `dark` | `dark` or `light` |
+| `variant` | string | `default` | `default` · `terminal` · `gradient` · `minimal` · `newspaper` |
+| `avatar` | string | `true` | set to `false` to hide owner avatar (default only) |
 **Example:**
 ```
-https://github-card-creater.vercel.app/api/card/facebook/react?theme=dark
+https://github-card-creater.vercel.app/api/card/facebook/react?theme=dark&variant=terminal
 ```
 Returns an `image/svg+xml` response with a 1-hour cache.
 ### Preview Endpoint

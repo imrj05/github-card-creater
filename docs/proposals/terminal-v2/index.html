@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Terminal v2 — Design Directions</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-elev: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --subtext: #8b949e;
+      --accent: #58a6ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 48px 48px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 { margin: 0 0 8px; font-size: 32px; font-weight: 700; }
+    header p { margin: 0; color: var(--subtext); font-size: 16px; }
+    main { padding: 48px; max-width: 1400px; margin: 0 auto; }
+    .proposal {
+      margin-bottom: 80px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .proposal:last-child { border-bottom: none; }
+    .proposal h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .proposal h2 .tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--subtext);
+    }
+    .proposal .lede {
+      color: var(--subtext);
+      font-size: 15px;
+      margin: 0 0 24px;
+      max-width: 80ch;
+    }
+    .proposal .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .proposal .details > div {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .proposal .details h3 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .proposal .details ul {
+      margin: 0; padding-left: 20px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .proposal .details li { margin-bottom: 6px; }
+    .swatch {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-right: 6px;
+      border: 1px solid var(--border);
+    }
+    .mockup {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #000;
+    }
+    .variants {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .variants figure { margin: 0; }
+    .variants figcaption {
+      font-size: 12px;
+      color: var(--subtext);
+      margin-top: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Terminal v2 — 3 design directions</h1>
+    <p>Concept locked: a terminal window showing repo info as CLI output. Refreshing execution within the unified family. Light + dark variants shown for each.</p>
+  </header>
+  <main>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <section class="proposal">
+      <h2>Direction A — Crisp IDE <span class="tag">recommended</span></h2>
+      <p class="lede">A modern terminal with macOS-style chrome, soft pastel prompt, GitHub-style muted blue accent, and clean key-value output. Reads as "developer tool" rather than "retro computer".</p>
+
+      <div class="variants">
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <clipPath id="ideA-d"><rect x="40" y="40" width="1200" height="560" rx="10"/></clipPath>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="#0d1117"/>
+            <rect x="40" y="40" width="1200" height="560" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+            <g clip-path="url(#ideA-d)">
+              <rect x="40" y="40" width="1200" height="44" fill="#161b22"/>
+              <circle cx="68" cy="62" r="6" fill="#ff5f57"/>
+              <circle cx="88" cy="62" r="6" fill="#febc2e"/>
+              <circle cx="108" cy="62" r="6" fill="#28c840"/>
+              <text x="640" y="68" text-anchor="middle" class="m" font-size="14" fill="#8b949e">imrj05/github-card-creater — zsh — 1280×640</text>
+              <line x1="40" y1="84" x2="1240" y2="84" stroke="#30363d" stroke-width="1"/>
+              <text x="68" y="142" class="m" font-size="22" fill="#d2a8ff">❯</text>
+              <text x="96" y="142" class="m" font-size="22" fill="#c9d1d9">gh repo view <tspan fill="#79c0ff" font-weight="700">imrj05/github-card-creater</tspan></text>
+              <text x="68" y="210" class="m" font-size="36" font-weight="800" fill="#e6edf3">github-card-creater</text>
+              <text x="68" y="240" class="m" font-size="16" fill="#8b949e">imrj05/github-card-creater · Public</text>
+              <text x="68" y="290" class="m" font-size="18" fill="#c9d1d9">Generate beautiful 1280×640 social preview cards for</text>
+              <text x="68" y="316" class="m" font-size="18" fill="#c9d1d9">any GitHub repository — perfect for README embeds,</text>
+              <text x="68" y="342" class="m" font-size="18" fill="#c9d1d9">link previews, and sharing.</text>
+              <line x1="68" y1="392" x2="1212" y2="392" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>
+              <g class="m" font-size="17">
+                <text x="68" y="436" fill="#8b949e">stars</text>
+                <text x="180" y="436" fill="#e6edf3" font-weight="700">142</text>
+                <text x="68" y="468" fill="#8b949e">forks</text>
+                <text x="180" y="468" fill="#e6edf3" font-weight="700">28</text>
+                <text x="68" y="500" fill="#8b949e">open_issues</text>
+                <text x="180" y="500" fill="#e6edf3" font-weight="700">5</text>
+                <text x="320" y="436" fill="#8b949e">language</text>
+                <text x="432" y="436" fill="#f1e05a" font-weight="700">JavaScript</text>
+                <text x="320" y="468" fill="#8b949e">license</text>
+                <text x="432" y="468" fill="#e6edf3" font-weight="700">MIT</text>
+                <text x="320" y="500" fill="#8b949e">homepage</text>
+                <text x="432" y="500" fill="#79c0ff" font-weight="500">github-card-creater.vercel.app</text>
+              </g>
+              <text x="68" y="568" class="m" font-size="20" fill="#d2a8ff">❯</text>
+              <rect x="92" y="552" width="10" height="20" fill="#c9d1d9" opacity="0.5"/>
+            </g>
+          </svg>
+          <figcaption>Dark</figcaption>
+        </figure>
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <clipPath id="ideA-l"><rect x="40" y="40" width="1200" height="560" rx="10"/></clipPath>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="#f6f8fa"/>
+            <rect x="40" y="40" width="1200" height="560" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+            <g clip-path="url(#ideA-l)">
+              <rect x="40" y="40" width="1200" height="44" fill="#f6f8fa"/>
+              <circle cx="68" cy="62" r="6" fill="#ff5f57"/>
+              <circle cx="88" cy="62" r="6" fill="#febc2e"/>
+              <circle cx="108" cy="62" r="6" fill="#28c840"/>
+              <text x="640" y="68" text-anchor="middle" class="m" font-size="14" fill="#656d76">imrj05/github-card-creater — zsh — 1280×640</text>
+              <line x1="40" y1="84" x2="1240" y2="84" stroke="#d0d7de" stroke-width="1"/>
+              <text x="68" y="142" class="m" font-size="22" fill="#8250df">❯</text>
+              <text x="96" y="142" class="m" font-size="22" fill="#1f2328">gh repo view <tspan fill="#0969da" font-weight="700">imrj05/github-card-creater</tspan></text>
+              <text x="68" y="210" class="m" font-size="36" font-weight="800" fill="#1f2328">github-card-creater</text>
+              <text x="68" y="240" class="m" font-size="16" fill="#656d76">imrj05/github-card-creater · Public</text>
+              <text x="68" y="290" class="m" font-size="18" fill="#1f2328">Generate beautiful 1280×640 social preview cards for</text>
+              <text x="68" y="316" class="m" font-size="18" fill="#1f2328">any GitHub repository — perfect for README embeds,</text>
+              <text x="68" y="342" class="m" font-size="18" fill="#1f2328">link previews, and sharing.</text>
+              <line x1="68" y1="392" x2="1212" y2="392" stroke="#d0d7de" stroke-width="1" stroke-dasharray="4 4"/>
+              <g class="m" font-size="17">
+                <text x="68" y="436" fill="#656d76">stars</text>
+                <text x="180" y="436" fill="#1f2328" font-weight="700">142</text>
+                <text x="68" y="468" fill="#656d76">forks</text>
+                <text x="180" y="468" fill="#1f2328" font-weight="700">28</text>
+                <text x="68" y="500" fill="#656d76">open_issues</text>
+                <text x="180" y="500" fill="#1f2328" font-weight="700">5</text>
+                <text x="320" y="436" fill="#656d76">language</text>
+                <text x="432" y="436" fill="#bf3989" font-weight="700">JavaScript</text>
+                <text x="320" y="468" fill="#656d76">license</text>
+                <text x="432" y="468" fill="#1f2328" font-weight="700">MIT</text>
+                <text x="320" y="500" fill="#656d76">homepage</text>
+                <text x="432" y="500" fill="#0969da" font-weight="500">github-card-creater.vercel.app</text>
+              </g>
+              <text x="68" y="568" class="m" font-size="20" fill="#8250df">❯</text>
+              <rect x="92" y="552" width="10" height="20" fill="#1f2328" opacity="0.5"/>
+            </g>
+          </svg>
+          <figcaption>Light</figcaption>
+        </figure>
+      </div>
+
+      <div class="details">
+        <div>
+          <h3>Type &amp; spacing</h3>
+          <ul>
+            <li>JetBrains Mono, 800 for repo title (36px), 500 for body (18px), 500 for stats (17px)</li>
+            <li>Soft 8px line height on body lines, generous 32px between sections</li>
+            <li>Dotted divider separates metadata from output</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Palette (dark / light)</h3>
+          <ul>
+            <li><span class="swatch" style="background:#0d1117"></span><span class="swatch" style="background:#ffffff"></span> bg</li>
+            <li><span class="swatch" style="background:#79c0ff"></span><span class="swatch" style="background:#0969da"></span> accent (link / repo)</li>
+            <li><span class="swatch" style="background:#d2a8ff"></span><span class="swatch" style="background:#8250df"></span> prompt (purple)</li>
+            <li><span class="swatch" style="background:#f1e05a"></span><span class="swatch" style="background:#bf3989"></span> language dot</li>
+            <li><span class="swatch" style="background:#8b949e"></span><span class="swatch" style="background:#656d76"></span> subtext (key labels)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <section class="proposal">
+      <h2>Direction B — Old Terminal (CRT)</h2>
+      <p class="lede">Phosphor-green CRT with scanlines, subtle text glow, vignette, and a "last login" header. Vintage and atmospheric — leans into the retro computer reading of the concept.</p>
+
+      <div class="variants">
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <pattern id="scanB-d" width="2" height="3" patternUnits="userSpaceOnUse">
+                <rect width="2" height="3" fill="transparent"/>
+                <line x1="0" y1="1.5" x2="2" y2="1.5" stroke="#39ff14" stroke-width="0.3" opacity="0.15"/>
+              </pattern>
+              <radialGradient id="vignetteB-d" cx="0.5" cy="0.5" r="0.7">
+                <stop offset="60%" stop-color="#0a0f08" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#000000" stop-opacity="0.8"/>
+              </radialGradient>
+              <filter id="glowB" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="#000"/>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="#0a0f08" stroke="#1a2e1a" stroke-width="2"/>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="url(#scanB-d)"/>
+            <g filter="url(#glowB)">
+              <text x="68" y="92" class="m" font-size="14" fill="#39ff14" opacity="0.7">Last login: Mon Jun 6 10:23 on tty1</text>
+              <text x="68" y="138" class="m" font-size="16" fill="#39ff14" opacity="0.85">imrj05@github:~$ gh repo view <tspan fill="#aaffaa">imrj05/github-card-creater</tspan></text>
+              <text x="68" y="200" class="m" font-size="38" font-weight="800" fill="#39ff14">github-card-creater</text>
+              <text x="68" y="232" class="m" font-size="14" fill="#1f6f1f">a repository by imrj05 · Public</text>
+              <text x="68" y="288" class="m" font-size="17" fill="#aaffaa">Generate beautiful 1280×640 social preview</text>
+              <text x="68" y="314" class="m" font-size="17" fill="#aaffaa">cards for any GitHub repository — perfect</text>
+              <text x="68" y="340" class="m" font-size="17" fill="#aaffaa">for README embeds, link previews, sharing.</text>
+              <text x="68" y="404" class="m" font-size="16" fill="#39ff14">─────────────────────────────────────────</text>
+              <g class="m" font-size="16">
+                <text x="68" y="440" fill="#39ff14">[*] stars</text>
+                <text x="200" y="440" fill="#aaffaa" font-weight="700">142</text>
+                <text x="68" y="468" fill="#39ff14">[+] forks</text>
+                <text x="200" y="468" fill="#aaffaa" font-weight="700">28</text>
+                <text x="68" y="496" fill="#39ff14">[!] open_issues</text>
+                <text x="200" y="496" fill="#aaffaa" font-weight="700">5</text>
+                <text x="380" y="440" fill="#39ff14">[#] language</text>
+                <text x="540" y="440" fill="#aaffaa" font-weight="700">JavaScript</text>
+                <text x="380" y="468" fill="#39ff14">[§] license</text>
+                <text x="540" y="468" fill="#aaffaa" font-weight="700">MIT</text>
+                <text x="380" y="496" fill="#39ff14">[@] homepage</text>
+                <text x="540" y="496" fill="#aaffaa" font-weight="700">github-card-creater.vercel.app</text>
+              </g>
+              <text x="68" y="564" class="m" font-size="16" fill="#39ff14">imrj05@github:~$ <tspan fill="#aaffaa" opacity="0.6">▌</tspan></text>
+            </g>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="url(#vignetteB-d)"/>
+          </svg>
+          <figcaption>Dark</figcaption>
+        </figure>
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <pattern id="scanB-l" width="2" height="3" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="1.5" x2="2" y2="1.5" stroke="#1f6f1f" stroke-width="0.3" opacity="0.18"/>
+              </pattern>
+              <radialGradient id="vignetteB-l" cx="0.5" cy="0.5" r="0.7">
+                <stop offset="60%" stop-color="#f4f6f0" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#2a3a2a" stop-opacity="0.5"/>
+              </radialGradient>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="#dde2d6"/>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="#f4f6f0" stroke="#c2cdb6" stroke-width="2"/>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="url(#scanB-l)"/>
+            <text x="68" y="92" class="m" font-size="14" fill="#1f6f1f" opacity="0.8">Last login: Mon Jun 6 10:23 on tty1</text>
+            <text x="68" y="138" class="m" font-size="16" fill="#1a4a14">imrj05@github:~$ gh repo view <tspan fill="#1f6f1f" font-weight="700">imrj05/github-card-creater</tspan></text>
+            <text x="68" y="200" class="m" font-size="38" font-weight="800" fill="#1a4a14">github-card-creater</text>
+            <text x="68" y="232" class="m" font-size="14" fill="#5a6e5a">a repository by imrj05 · Public</text>
+            <text x="68" y="288" class="m" font-size="17" fill="#2a3a2a">Generate beautiful 1280×640 social preview</text>
+            <text x="68" y="314" class="m" font-size="17" fill="#2a3a2a">cards for any GitHub repository — perfect</text>
+            <text x="68" y="340" class="m" font-size="17" fill="#2a3a2a">for README embeds, link previews, sharing.</text>
+            <text x="68" y="404" class="m" font-size="16" fill="#1f6f1f">─────────────────────────────────────────</text>
+            <g class="m" font-size="16">
+              <text x="68" y="440" fill="#1f6f1f">[*] stars</text>
+              <text x="200" y="440" fill="#1a4a14" font-weight="700">142</text>
+              <text x="68" y="468" fill="#1f6f1f">[+] forks</text>
+              <text x="200" y="468" fill="#1a4a14" font-weight="700">28</text>
+              <text x="68" y="496" fill="#1f6f1f">[!] open_issues</text>
+              <text x="200" y="496" fill="#1a4a14" font-weight="700">5</text>
+              <text x="380" y="440" fill="#1f6f1f">[#] language</text>
+              <text x="540" y="440" fill="#1a4a14" font-weight="700">JavaScript</text>
+              <text x="380" y="468" fill="#1f6f1f">[§] license</text>
+              <text x="540" y="468" fill="#1a4a14" font-weight="700">MIT</text>
+              <text x="380" y="496" fill="#1f6f1f">[@] homepage</text>
+              <text x="540" y="496" fill="#1a4a14" font-weight="700">github-card-creater.vercel.app</text>
+            </g>
+            <text x="68" y="564" class="m" font-size="16" fill="#1a4a14">imrj05@github:~$ <tspan fill="#1f6f1f" opacity="0.6">▌</tspan></text>
+            <rect x="40" y="40" width="1200" height="560" rx="20" fill="url(#vignetteB-l)"/>
+          </svg>
+          <figcaption>Light</figcaption>
+        </figure>
+      </div>
+
+      <div class="details">
+        <div>
+          <h3>Type &amp; spacing</h3>
+          <ul>
+            <li>JetBrains Mono only, glow filter on text in dark mode</li>
+            <li>Heavier 800 weight on title (38px), 16–17px body, `[x]` symbol prefixes for stats</li>
+            <li>Scanline pattern overlay (1.5px stride, 0.15 opacity) for CRT effect in dark</li>
+            <li>Vignette gradient at edges to imply CRT curvature</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Palette (dark / light)</h3>
+          <ul>
+            <li><span class="swatch" style="background:#0a0f08"></span><span class="swatch" style="background:#f4f6f0"></span> bg (phosphor black / paper white)</li>
+            <li><span class="swatch" style="background:#39ff14"></span><span class="swatch" style="background:#1f6f1f"></span> phosphor / ink</li>
+            <li><span class="swatch" style="background:#aaffaa"></span><span class="swatch" style="background:#2a3a2a"></span> output text (soft green / charcoal)</li>
+            <li><span class="swatch" style="background:#1a2e1a"></span><span class="swatch" style="background:#c2cdb6"></span> border</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <section class="proposal">
+      <h2>Direction C — Modern CLI (Starship)</h2>
+      <p class="lede">No window chrome — just a clean rounded panel with a subtle gradient backdrop, a single horizontal stat row, and a starship/prompt-style header pill. Minimal, refined, contemporary.</p>
+
+      <div class="variants">
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <linearGradient id="bgC-d" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0a0e0a"/>
+                <stop offset="100%" stop-color="#13181b"/>
+              </linearGradient>
+              <clipPath id="panelC-d"><rect x="64" y="64" width="1152" height="512" rx="16"/></clipPath>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="url(#bgC-d)"/>
+            <rect x="64" y="64" width="1152" height="512" rx="16" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+            <g clip-path="url(#panelC-d)">
+              <!-- header pill: avatar + path -->
+              <rect x="104" y="104" width="320" height="44" rx="22" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+              <circle cx="126" cy="126" r="14" fill="#58a6ff" opacity="0.3"/>
+              <text x="150" y="132" class="m" font-size="15" fill="#8b949e">~/repos/<tspan fill="#c9d1d9" font-weight="700">github-card-creater</tspan></text>
+              <!-- title -->
+              <text x="104" y="240" class="m" font-size="14" fill="#8b949e">imrj05/</text>
+              <text x="170" y="240" class="m" font-size="44" font-weight="800" fill="#e6edf3">github-card-creater</text>
+              <text x="104" y="270" class="m" font-size="13" fill="#6e7681">Public · updated 2 days ago</text>
+              <!-- description -->
+              <text x="104" y="334" class="m" font-size="18" fill="#c9d1d9">Generate beautiful 1280×640 social preview cards</text>
+              <text x="104" y="362" class="m" font-size="18" fill="#c9d1d9">for any GitHub repository — README embeds,</text>
+              <text x="104" y="390" class="m" font-size="18" fill="#c9d1d9">link previews, and sharing.</text>
+              <text x="104" y="438" class="m" font-size="15" fill="#58a6ff">→ github-card-creater.vercel.app</text>
+              <!-- divider -->
+              <line x1="104" y1="478" x2="1176" y2="478" stroke="#21262d" stroke-width="1"/>
+              <!-- stat row -->
+              <g class="m" font-size="18">
+                <text x="104" y="528" fill="#8b949e">★</text>
+                <text x="128" y="528" fill="#e6edf3" font-weight="700">142</text>
+                <text x="170" y="528" fill="#6e7681">stars</text>
+                <text x="260" y="528" fill="#30363d">·</text>
+                <text x="284" y="528" fill="#8b949e">⑂</text>
+                <text x="308" y="528" fill="#e6edf3" font-weight="700">28</text>
+                <text x="344" y="528" fill="#6e7681">forks</text>
+                <text x="430" y="528" fill="#30363d">·</text>
+                <text x="454" y="528" fill="#8b949e">⚠</text>
+                <text x="478" y="528" fill="#e6edf3" font-weight="700">5</text>
+                <text x="510" y="528" fill="#6e7681">open</text>
+                <text x="586" y="528" fill="#30363d">·</text>
+                <circle cx="612" cy="522" r="6" fill="#f1e05a"/>
+                <text x="626" y="528" fill="#c9d1d9">JavaScript</text>
+                <text x="754" y="528" fill="#30363d">·</text>
+                <text x="778" y="528" fill="#c9d1d9">MIT</text>
+                <text x="844" y="528" fill="#30363d">·</text>
+                <text x="868" y="528" fill="#6e7681">© 2026</text>
+              </g>
+              <!-- prompt -->
+              <text x="1176" y="528" text-anchor="end" class="m" font-size="14" fill="#6e7681">gh-card ›</text>
+            </g>
+          </svg>
+          <figcaption>Dark</figcaption>
+        </figure>
+        <figure>
+          <svg class="mockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+            <defs>
+              <linearGradient id="bgC-l" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f6f8fa"/>
+                <stop offset="100%" stop-color="#eef2f6"/>
+              </linearGradient>
+              <clipPath id="panelC-l"><rect x="64" y="64" width="1152" height="512" rx="16"/></clipPath>
+              <style>
+                .m { font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace; }
+              </style>
+            </defs>
+            <rect width="1280" height="640" fill="url(#bgC-l)"/>
+            <rect x="64" y="64" width="1152" height="512" rx="16" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+            <g clip-path="url(#panelC-l)">
+              <rect x="104" y="104" width="320" height="44" rx="22" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+              <circle cx="126" cy="126" r="14" fill="#0969da" opacity="0.25"/>
+              <text x="150" y="132" class="m" font-size="15" fill="#656d76">~/repos/<tspan fill="#1f2328" font-weight="700">github-card-creater</tspan></text>
+              <text x="104" y="240" class="m" font-size="14" fill="#656d76">imrj05/</text>
+              <text x="170" y="240" class="m" font-size="44" font-weight="800" fill="#1f2328">github-card-creater</text>
+              <text x="104" y="270" class="m" font-size="13" fill="#656d76">Public · updated 2 days ago</text>
+              <text x="104" y="334" class="m" font-size="18" fill="#1f2328">Generate beautiful 1280×640 social preview cards</text>
+              <text x="104" y="362" class="m" font-size="18" fill="#1f2328">for any GitHub repository — README embeds,</text>
+              <text x="104" y="390" class="m" font-size="18" fill="#1f2328">link previews, and sharing.</text>
+              <text x="104" y="438" class="m" font-size="15" fill="#0969da">→ github-card-creater.vercel.app</text>
+              <line x1="104" y1="478" x2="1176" y2="478" stroke="#d0d7de" stroke-width="1"/>
+              <g class="m" font-size="18">
+                <text x="104" y="528" fill="#656d76">★</text>
+                <text x="128" y="528" fill="#1f2328" font-weight="700">142</text>
+                <text x="170" y="528" fill="#656d76">stars</text>
+                <text x="260" y="528" fill="#d0d7de">·</text>
+                <text x="284" y="528" fill="#656d76">⑂</text>
+                <text x="308" y="528" fill="#1f2328" font-weight="700">28</text>
+                <text x="344" y="528" fill="#656d76">forks</text>
+                <text x="430" y="528" fill="#d0d7de">·</text>
+                <text x="454" y="528" fill="#656d76">⚠</text>
+                <text x="478" y="528" fill="#1f2328" font-weight="700">5</text>
+                <text x="510" y="528" fill="#656d76">open</text>
+                <text x="586" y="528" fill="#d0d7de">·</text>
+                <circle cx="612" cy="522" r="6" fill="#bf3989"/>
+                <text x="626" y="528" fill="#1f2328">JavaScript</text>
+                <text x="754" y="528" fill="#d0d7de">·</text>
+                <text x="778" y="528" fill="#1f2328">MIT</text>
+                <text x="844" y="528" fill="#d0d7de">·</text>
+                <text x="868" y="528" fill="#656d76">© 2026</text>
+              </g>
+              <text x="1176" y="528" text-anchor="end" class="m" font-size="14" fill="#656d76">gh-card ›</text>
+            </g>
+          </svg>
+          <figcaption>Light</figcaption>
+        </figure>
+      </div>
+
+      <div class="details">
+        <div>
+          <h3>Type &amp; spacing</h3>
+          <ul>
+            <li>JetBrains Mono throughout; 800 weight on title (44px)</li>
+            <li>Single horizontal stat row at bottom with `·` separators — most info-dense layout of the three</li>
+            <li>Header pill with avatar + repo path</li>
+            <li>No window chrome — relies on panel + border for containment</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Palette (dark / light)</h3>
+          <ul>
+            <li><span class="swatch" style="background:linear-gradient(135deg,#0a0e0a,#13181b)"></span><span class="swatch" style="background:linear-gradient(135deg,#f6f8fa,#eef2f6)"></span> bg (subtle diagonal gradient)</li>
+            <li><span class="swatch" style="background:#0d1117"></span><span class="swatch" style="background:#ffffff"></span> panel</li>
+            <li><span class="swatch" style="background:#58a6ff"></span><span class="swatch" style="background:#0969da"></span> accent (link)</li>
+            <li><span class="swatch" style="background:#21262d"></span><span class="swatch" style="background:#d0d7de"></span> divider / separator</li>
+            <li><span class="swatch" style="background:#f1e05a"></span><span class="swatch" style="background:#bf3989"></span> language dot</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

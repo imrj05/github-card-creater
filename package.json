@@ -27,17 +27,32 @@
     ],
     "scripts": {
         "start": "node src/server.js",
-        "dev": "nodemon src/server.js"
+        "dev": "nodemon src/server.js",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "lint": "eslint src/",
+        "format": "prettier --check src/",
+        "format:fix": "prettier --write src/"
     },
     "dependencies": {
+        "cors": "^2.8.6",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
-        "node-fetch": "^2.7.0"
+        "express-rate-limit": "^8.5.2",
+        "helmet": "^8.2.0",
+        "node-fetch": "^2.7.0",
+        "pino": "^10.3.1",
+        "pino-http": "^11.0.0"
     },
     "engines": {
         "node": ">=18.0.0"
     },
     "devDependencies": {
-        "nodemon": "^3.1.14"
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.4.1",
+        "eslint-config-prettier": "^10.1.8",
+        "nodemon": "^3.1.14",
+        "prettier": "^3.8.3",
+        "vitest": "^4.1.8"
     }
 }
